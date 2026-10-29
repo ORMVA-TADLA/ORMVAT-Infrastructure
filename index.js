@@ -25,8 +25,14 @@ const BASEMAPS = [
             attribution: 'Tiles &copy; Esri',
             maxZoom: 19
         })
+    },
+    {
+        id: 'none',
+        label: 'Aucun',
+        layer: null // blank background
     }
 ];
+
 
 let activeBasemap = BASEMAPS[0];
 activeBasemap.layer.addTo(map);
@@ -128,9 +134,9 @@ BASEMAPS.forEach((base) => {
         <input type="radio" name="basemap" value="${base.id}" ${base === activeBasemap ? 'checked' : ''}>
         <span>${base.label}</span>`;
     label.querySelector('input').addEventListener('change', () => {
-        map.removeLayer(activeBasemap.layer);
+        if (activeBasemap.layer) map.removeLayer(activeBasemap.layer);
         activeBasemap = base;
-        base.layer.addTo(map).bringToBack();
+        if (base.layer) base.layer.addTo(map).bringToBack();
     });
     basemapList.appendChild(label);
 });

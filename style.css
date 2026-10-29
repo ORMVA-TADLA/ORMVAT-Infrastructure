@@ -6,7 +6,7 @@
 	--line: #d5e0de;
 	--water: #1f6feb;
 	--p-color: blue;
-	--s-color: rgb(0, 182, 21);
+	--s-color: rgb(0, 120, 14);
 	--radius-lg: 16px;
 	--radius-md: 12px;
 	--shadow: 0 6px 20px rgba(18, 48, 46, 0.18), 0 1px 3px rgba(18, 48, 46, 0.2);
@@ -36,7 +36,7 @@ body {
 #map {
 	position: absolute;
 	inset: 0;
-	background: var(--surface-alt);
+	background: #fff;
 }
 
 button {
