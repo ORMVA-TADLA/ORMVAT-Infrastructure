@@ -1,44 +1,54 @@
-/** 
+/**
  * ==========================================
- * 1. MAP INITIALIZATION & TILE LAYER
- * ==========================================
- */
-console.log('🗺️ Initializing map...');
-const map = L.map('map').setView([32.294577425170004, -6.7027966781581165], 10);
-
-// Assign the tile layer to a variable so we can add it to the layer control
-const osmBaseMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 19
-}).addTo(map);
-
-console.log('✅ Map initialized');
-
-/** 
- * ==========================================
- * 2. LAYER GROUPS & CONTROLS SETUP
+ * 1. MAP & BASEMAPS
  * ==========================================
  */
-// Create empty layer groups for our data
+const map = L.map('map', {
+    zoomControl: false // custom position below
+}).setView([32.294577425170004, -6.7027966781581165], 10);
+
+L.control.zoom({ position: 'bottomleft' }).addTo(map);
+
+const BASEMAPS = [
+    {
+        id: 'osm',
+        label: 'Plan',
+        layer: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 19
+        })
+    },
+    {
+        id: 'satellite',
+        label: 'Satellite',
+        layer: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri',
+            maxZoom: 19
+        })
+    }
+];
+
+let activeBasemap = BASEMAPS[0];
+activeBasemap.layer.addTo(map);
+
+/**
+ * ==========================================
+ * 2. OVERLAY LAYERS (single source of truth)
+ * ==========================================
+ */
 const imageOverlayGroup = L.layerGroup().addTo(map);
 const pDataGroup = L.layerGroup().addTo(map);
 const sDataGroup = L.layerGroup().addTo(map);
 
-// Set up the Layer Control dictionary
-const baseMaps = {
-    "OpenStreetMap": osmBaseMap
-};
+let referenceImage = null; // set in addImageOverlay()
 
-const overlayMaps = {
-    "Reference Map (Image)": imageOverlayGroup,
-    "P Data (Blue)": pDataGroup,
-    "S Data (Purple)": sDataGroup
-};
+const OVERLAYS = [
+    { id: 'image', label: 'Plan de référence', group: imageOverlayGroup, image: true },
+    { id: 'p', label: 'Couche P', group: pDataGroup, color: 'blue', file: 'P.geojson' },
+    { id: 's', label: 'Couche S', group: sDataGroup, color: 'purple', file: 'S.geojson' }
+];
 
-// Add the layer control menu to the map
-L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-
-/** 
+/**
  * ==========================================
  * 3. IMAGE OVERLAY (WEB MERCATOR)
  * ==========================================
@@ -46,151 +56,253 @@ L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 function addImageOverlay() {
     const imageUrl = './Reference-map-M8M9.png';
 
-    // Web Mercator bounding box coordinates
+    // Web Mercator bounding box
     const xMin = -766932.573;
     const yMin = 3796308.928;
     const xMax = -756549.053;
     const yMax = 3805209.088;
 
-    // Convert to Lat/Lng
-    const topLeftLatLng = L.CRS.EPSG3857.unproject(L.point(xMin, yMax));
-    const bottomRightLatLng = L.CRS.EPSG3857.unproject(L.point(xMax, yMin));
+    const topLeft = L.CRS.EPSG3857.unproject(L.point(xMin, yMax));
+    const bottomRight = L.CRS.EPSG3857.unproject(L.point(xMax, yMin));
 
-    const imageBounds = [
-        [topLeftLatLng.lat, topLeftLatLng.lng],
-        [bottomRightLatLng.lat, bottomRightLatLng.lng]
-    ];
-
-    // Add the image to the imageOverlayGroup, NOT the map directly
-    L.imageOverlay(imageUrl, imageBounds, { opacity: 1 }).addTo(imageOverlayGroup);
-    console.log('🖼️ Image overlay added to layer group');
+    referenceImage = L.imageOverlay(
+        imageUrl,
+        [[topLeft.lat, topLeft.lng], [bottomRight.lat, bottomRight.lng]],
+        { opacity: 1 }
+    ).addTo(imageOverlayGroup);
 }
 addImageOverlay();
 
-/** 
+/**
  * ==========================================
  * 4. GEOJSON LAYERS
  * ==========================================
  */
-console.log('🌐 Loading GeoJSON layers...');
-
-async function loadGeoJSONLayer(filename, strokeColor, targetGroup) {
+async function loadGeoJSONLayer({ file, color, group }) {
     try {
-        const response = await fetch(filename);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
+        const response = await fetch(file);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
 
-        // Create the GeoJSON layer and add it to the specific target group
-        L.geoJSON(data, {
-            style: {
-                weight: 1.5,
-                color: strokeColor,
-            }
-        }).addTo(targetGroup);
-
-        console.log(`✅ ${filename} loaded into layer group`);
+        L.geoJSON(data, { style: { weight: 1.5, color } }).addTo(group);
     } catch (error) {
-        console.error(`❌ Error loading ${filename}:`, error);
+        console.error(`Error loading ${file}:`, error);
+        showToast(`Impossible de charger ${file}.`);
     }
 }
 
-// Load layers dynamically and assign them to their respective groups
-loadGeoJSONLayer("P.geojson", "blue", pDataGroup);
-loadGeoJSONLayer("S.geojson", "purple", sDataGroup);
+OVERLAYS.filter((o) => o.file).forEach(loadGeoJSONLayer);
 
-/** 
+/**
  * ==========================================
- * 5. ZOOM HANDLING (OPTIMIZED)
+ * 5. LAYERS PANEL UI
+ * ==========================================
+ */
+const layersToggle = document.getElementById('layers-toggle');
+const layersPanel = document.getElementById('layers-panel');
+const basemapList = document.getElementById('basemap-list');
+const layerList = document.getElementById('layer-list');
+
+function setPanelOpen(open) {
+    layersPanel.hidden = !open;
+    layersToggle.setAttribute('aria-expanded', String(open));
+}
+
+layersToggle.addEventListener('click', () => setPanelOpen(layersPanel.hidden));
+map.on('click', () => setPanelOpen(false));
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !layersPanel.hidden) {
+        setPanelOpen(false);
+        layersToggle.focus();
+    }
+});
+
+// Keep taps inside the panel from reaching the map
+L.DomEvent.disableClickPropagation(layersPanel);
+L.DomEvent.disableScrollPropagation(layersPanel);
+
+// Basemap radio buttons
+BASEMAPS.forEach((base) => {
+    const label = document.createElement('label');
+    label.innerHTML = `
+        <input type="radio" name="basemap" value="${base.id}" ${base === activeBasemap ? 'checked' : ''}>
+        <span>${base.label}</span>`;
+    label.querySelector('input').addEventListener('change', () => {
+        map.removeLayer(activeBasemap.layer);
+        activeBasemap = base;
+        base.layer.addTo(map).bringToBack();
+    });
+    basemapList.appendChild(label);
+});
+
+// Overlay toggles
+OVERLAYS.forEach((overlay) => {
+    const li = document.createElement('li');
+    const swatchClass = overlay.image ? 'layer-row__swatch layer-row__swatch--image' : 'layer-row__swatch';
+    const swatchStyle = overlay.color ? `style="--swatch:${overlay.color}"` : '';
+
+    li.innerHTML = `
+        <label class="layer-row">
+            <span class="${swatchClass}" ${swatchStyle}></span>
+            <span class="layer-row__label">${overlay.label}</span>
+            <span class="switch">
+                <input type="checkbox" checked>
+                <span class="switch__track"></span>
+            </span>
+        </label>
+        ${overlay.image ? `
+        <div class="opacity" data-disabled="false">
+            <span>Opacité</span>
+            <input type="range" min="0" max="1" step="0.05" value="1" aria-label="Opacité du plan de référence">
+        </div>` : ''}`;
+
+    const checkbox = li.querySelector('input[type="checkbox"]');
+    const opacityBox = li.querySelector('.opacity');
+
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) map.addLayer(overlay.group);
+        else map.removeLayer(overlay.group);
+        if (opacityBox) opacityBox.dataset.disabled = String(!checkbox.checked);
+    });
+
+    if (opacityBox) {
+        opacityBox.querySelector('input').addEventListener('input', (e) => {
+            referenceImage?.setOpacity(Number(e.target.value));
+        });
+    }
+
+    layerList.appendChild(li);
+});
+
+/**
+ * ==========================================
+ * 6. ZOOM HANDLING
  * ==========================================
  */
 const ZOOM_THRESHOLD = 14;
 
 function updateMarkerVisibility() {
-    const currentZoom = map.getZoom();
-    const mapContainer = map.getContainer();
-
-    if (currentZoom < ZOOM_THRESHOLD) {
-        mapContainer.classList.add('hide-annotations');
-    } else {
-        mapContainer.classList.remove('hide-annotations');
-    }
+    map.getContainer().classList.toggle('hide-annotations', map.getZoom() < ZOOM_THRESHOLD);
 }
 map.on('zoomend', updateMarkerVisibility);
 updateMarkerVisibility();
 
-/** 
+/**
  * ==========================================
- * 6. GEOLOCATION & MARKER HANDLING
+ * 7. TOAST
  * ==========================================
  */
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+
+function showToast(message, duration = 3500) {
+    toastEl.textContent = message;
+    toastEl.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), duration);
+}
+
+/**
+ * ==========================================
+ * 8. GEOLOCATION
+ * ==========================================
+ */
+const locateButton = document.getElementById('locate-button');
 let userMarker = null;
+let accuracyCircle = null;
 
-function updateUserLocation(lat, lon) {
-    console.log('📍 Updating user location:', { lat, lon });
+function setLocating(busy) {
+    locateButton.classList.toggle('is-busy', busy);
+    locateButton.disabled = busy;
+}
 
-    if (userMarker) {
-        map.removeLayer(userMarker);
-    }
+function updateUserLocation(lat, lon, accuracy) {
+    setLocating(false);
+
+    if (userMarker) map.removeLayer(userMarker);
+    if (accuracyCircle) map.removeLayer(accuracyCircle);
 
     userMarker = L.marker([lat, lon], {
         icon: L.divIcon({
             className: 'user-location-marker',
-            html: '<div style="background-color: #2563eb; width: 16px; height: 16px; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(0,0,0,0.5);"></div>',
+            html: '<div class="user-dot"></div>',
             iconSize: [22, 22],
             iconAnchor: [11, 11]
-        })
+        }),
+        keyboard: false
     }).addTo(map);
 
-    userMarker.bindPopup('Your Location').openPopup();
+    if (accuracy) {
+        accuracyCircle = L.circle([lat, lon], {
+            radius: accuracy,
+            weight: 1,
+            color: '#1f6feb',
+            fillColor: '#1f6feb',
+            fillOpacity: 0.12,
+            interactive: false
+        }).addTo(map);
+    }
+
     map.setView([lat, lon], 15);
 }
 
 function locateUser() {
+    // Running inside the React Native WebView: ask the native side
     if (window.ReactNativeWebView) {
+        setLocating(true);
         window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'getLocation' }));
         return;
     }
 
     if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser.');
+        showToast("La géolocalisation n'est pas disponible sur cet appareil.");
         return;
     }
 
+    setLocating(true);
     navigator.geolocation.getCurrentPosition(
-        (position) => updateUserLocation(position.coords.latitude, position.coords.longitude),
-        (error) => alert('Unable to get location: ' + error.message)
+        ({ coords }) => updateUserLocation(coords.latitude, coords.longitude, coords.accuracy),
+        (error) => {
+            setLocating(false);
+            showToast('Position introuvable. Vérifiez que la localisation est activée.');
+            console.error('Geolocation error:', error);
+        },
+        { enableHighAccuracy: true, timeout: 15000 }
     );
 }
 
-/** 
+locateButton.addEventListener('click', locateUser);
+window.locateUser = locateUser; // kept for any native code calling it
+
+/**
  * ==========================================
- * 7. REACT NATIVE MESSAGING BRIDGE
+ * 9. REACT NATIVE MESSAGING BRIDGE
  * ==========================================
  */
 function handleMessage(data) {
     try {
-        const parsedData = typeof data === 'string' ? JSON.parse(data) : data;
+        const msg = typeof data === 'string' ? JSON.parse(data) : data;
 
-        switch (parsedData.type) {
+        switch (msg.type) {
             case 'locationUpdate':
-                updateUserLocation(parsedData.latitude, parsedData.longitude);
+                updateUserLocation(msg.latitude, msg.longitude, msg.accuracy);
                 break;
             case 'locationError':
-                alert('Location error: ' + parsedData.message);
+                setLocating(false);
+                showToast('Position introuvable : ' + msg.message);
                 break;
         }
     } catch (error) {
-        console.error('❌ Error parsing message:', error);
+        console.error('Error parsing message:', error);
     }
 }
 
 document.addEventListener('message', (event) => handleMessage(event.data));
 window.addEventListener('message', (event) => handleMessage(event.data));
 
-/** 
+/**
  * ==========================================
- * 8. SERVICE WORKER REGISTRATION
+ * 10. SERVICE WORKER
  * ==========================================
  */
 if ('serviceWorker' in navigator) {
@@ -198,7 +310,7 @@ if ('serviceWorker' in navigator) {
         try {
             await navigator.serviceWorker.register('./sw.js');
         } catch (err) {
-            console.error('❌ Service Worker registration failed:', err);
+            console.error('Service Worker registration failed:', err);
         }
     });
 }

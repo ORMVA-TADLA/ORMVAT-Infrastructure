@@ -1,24 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#12302e" />
+    <title>ORMVAT – DGRID Infrastructure</title>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
-    <link rel="apple-touch-icon" href="./icons/icon-192.png">
-    <title>ORMVAT Infrastructure</title>
-    <link rel="manifest" href="./manifest.json">
+
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+    <link rel="manifest" href="./manifest.json" />
 </head>
 
 <body>
-    <div id="map"></div>
-    <button class="location-button" onclick="locateUser()">
-        <svg class="location-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+    <div id="map" role="application" aria-label="Carte du réseau gravitaire"></div>
+
+    <!-- Title chip -->
+    <header class="title-chip">
+        <span class="title-chip__mark" aria-hidden="true"></span>
+        <div>
+            <h1>DGRID Infrastructure</h1>
+            <p>ORMVAT</p>
+        </div>
+    </header>
+
+    <!-- Layers -->
+    <div class="layers">
+        <button id="layers-toggle" class="fab fab--light" type="button"
+            aria-expanded="false" aria-controls="layers-panel" aria-label="Couches et fond de carte">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3 2.5 8.2 12 13.4l9.5-5.2L12 3Z" />
+                <path d="m2.5 12.1 9.5 5.2 9.5-5.2" />
+                <path d="m2.5 15.9 9.5 5.1 9.5-5.1" />
+            </svg>
+        </button>
+
+        <section id="layers-panel" class="panel" hidden>
+            <h2>Fond de carte</h2>
+            <div id="basemap-list" class="segmented" role="radiogroup" aria-label="Fond de carte"></div>
+
+            <h2>Couches</h2>
+            <ul id="layer-list" class="layer-list"></ul>
+        </section>
+    </div>
+
+    <!-- Locate -->
+    <button id="locate-button" class="fab fab--primary" type="button" aria-label="Ma position">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.2" />
+            <path d="M12 2.5v3.3M12 18.2v3.3M2.5 12h3.3M18.2 12h3.3" />
+            <circle cx="12" cy="12" r="7.2" />
         </svg>
     </button>
+
+    <!-- Messages -->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
     <script src="./index.js"></script>
 </body>
 
