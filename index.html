@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <title>ORMVAT Infrastructure</title>
+    <link rel="manifest" href="./manifest.json">
+</head>
+
+<body>
+    <div id="map"></div>
+    <button class="location-button" onclick="locateUser()">
+        <svg class="location-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
+        </svg>
+    </button>
+    <script src="./index.js"></script>
+</body>
+
+</html>
