@@ -43,9 +43,9 @@ const sDataGroup = L.layerGroup().addTo(map);
 let referenceImage = null; // set in addImageOverlay()
 
 const OVERLAYS = [
-    { id: 'image', label: 'Plan de référence', group: imageOverlayGroup, image: true },
-    { id: 'p', label: 'Couche P', group: pDataGroup, color: 'blue', file: 'P.geojson' },
-    { id: 's', label: 'Couche S', group: sDataGroup, color: 'purple', file: 'S.geojson' }
+    { id: 'image', label: 'Plan de M8/M9', group: imageOverlayGroup, image: true },
+    { id: 'primaires', label: 'Couche Primaires', group: pDataGroup, color: 'blue', file: 'primaires.geojson' },
+    { id: 'secondaires', label: 'Couche Secondaires', group: sDataGroup, color: 'purple', file: 'secondaires.geojson' },
 ];
 
 /**
