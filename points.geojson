@@ -1040,7 +1040,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A1",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1055,7 +1055,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A2",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1070,7 +1070,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A3",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1085,7 +1085,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A4",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1100,7 +1100,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A5",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1115,7 +1115,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A6",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1130,7 +1130,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A7",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {
@@ -1145,7 +1145,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Station de filtration A8",
-                "category": "Station de filtration",
+                "category": "Stations de filtration",
                 "color": "#4285F4"
             },
             "geometry": {

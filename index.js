@@ -224,7 +224,7 @@ const POINT_DEFAULT = {
 // One entry per category. Anything omitted falls back to POINT_DEFAULT.
 // Example: 'Station de filtration': { icon: ICONS.station, size: 30, color: '#4285F4' }
 const POINT_STYLES = {
-    'Station de filtration': { icon: './icons/house-fill.svg', color: '#4285F4' },
+    'Stations de filtration': { icon: './icons/house-fill.svg', color: '#4285F4' },
     'Prises de préfiltration': { icon: './icons/jail-prison.svg', color: '#4285F4' },
     'Vannes de régulation et de sectionnement': { color: '#F4B400' },
     'Départs & Décharges': { color: '#795548' },
