@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="theme-color" content="#12302e" />
     <title>ORMVAT Hydro-infrastructure</title>
 
@@ -24,14 +25,34 @@
         <span class="title-chip__mark" aria-hidden="true"></span>
         <div>
             <h1>DGRID Hydraulic infrastructure</h1>
-            <p>ORMVAT</p>
+            <p>ORMVA du Tadla</p>
         </div>
     </header>
 
+    <!-- Search -->
+    <div id="search" class="search" role="search">
+        <div class="search__field">
+            <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="m20 20-4.2-4.2" />
+            </svg>
+            <input id="search-input" class="search__input" type="search" inputmode="search"
+                placeholder="Rechercher un ouvrage…" autocomplete="off" autocapitalize="off" spellcheck="false"
+                role="combobox" aria-label="Rechercher un ouvrage" aria-expanded="false" aria-controls="search-results"
+                aria-autocomplete="list" enterkeyhint="search" />
+            <button id="search-clear" class="search__clear" type="button" aria-label="Effacer la recherche" hidden>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </div>
+        <ul id="search-results" class="search__results" role="listbox" aria-label="Résultats" hidden></ul>
+    </div>
+
     <!-- Layers -->
     <div class="layers">
-        <button id="layers-toggle" class="fab fab--light" type="button"
-            aria-expanded="false" aria-controls="layers-panel" aria-label="Couches et fond de carte">
+        <button id="layers-toggle" class="fab fab--light" type="button" aria-expanded="false"
+            aria-controls="layers-panel" aria-label="Couches et fond de carte">
             <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 3 2.5 8.2 12 13.4l9.5-5.2L12 3Z" />
                 <path d="m2.5 12.1 9.5 5.2 9.5-5.2" />
@@ -48,6 +69,16 @@
         </section>
     </div>
 
+    <!-- About -->
+    <button id="about-button" class="fab fab--light fab--about" type="button" aria-haspopup="dialog"
+        aria-label="À propos">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 11v5.5" />
+            <path d="M12 7.6v.01" />
+        </svg>
+    </button>
+
     <!-- Locate -->
     <button id="locate-button" class="fab fab--primary" type="button" aria-label="Ma position">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -56,6 +87,48 @@
             <circle cx="12" cy="12" r="7.2" />
         </svg>
     </button>
+
+    <!-- About dialog -->
+    <dialog id="about-dialog" class="about" aria-labelledby="about-title">
+        <form method="dialog" class="about__close-form">
+            <button class="about__close" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m6 6 12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </form>
+
+        <div class="about__head">
+            <span class="title-chip__mark" aria-hidden="true"></span>
+            <div>
+                <h2 id="about-title">DGRID Hydraulic infrastructure</h2>
+                <p>ORMVA du Tadla</p>
+            </div>
+        </div>
+
+        <p>
+            Cette carte présente les ouvrages et canaux du réseau gravitaire de l'ORMVAT :
+            canaux primaires et secondaires, stations de filtration, prises, vannes,
+            départs et décharges, ainsi que le plan de M8/M9.
+        </p>
+
+        <h3>Utilisation</h3>
+        <ul>
+            <li>Recherchez un ouvrage par son nom avec la barre de recherche.</li>
+            <li>Affichez ou masquez des couches avec le bouton en haut à droite.</li>
+            <li>Zoomez pour afficher les noms des ouvrages ; touchez un ouvrage pour ses détails.</li>
+            <li>Le bouton bleu vous localise sur la carte.</li>
+        </ul>
+
+        <h3>Sources</h3>
+        <p>
+            Fonds de carte © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+                rel="noopener">OpenStreetMap</a>
+            et Esri. Carte réalisée avec <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>.
+        </p>
+
+        <p class="about__meta">Version 1.0 · © ORMVAT/DGRID - By Anas Asimi</p>
+    </dialog>
 
     <!-- Messages -->
     <div id="toast" class="toast" role="status" aria-live="polite"></div>

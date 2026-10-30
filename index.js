@@ -333,6 +333,7 @@ async function loadPoints() {
         const data = await response.json();
 
         const categories = new Map(); // category -> { group, colors, style }
+        searchIndex.length = 0;
 
         L.geoJSON(data, {
             pointToLayer: createPointLayer,
@@ -356,6 +357,14 @@ async function loadPoints() {
                 }
                 const entry = categories.get(category);
                 entry.group.addLayer(layer);
+                searchIndex.push({
+                    name,
+                    category,
+                    color: style.color,
+                    layer,
+                    group: entry.group,
+                    key: normalize(`${name} ${category}`)
+                });
                 if (!entry.colors.includes(style.color)) entry.colors.push(style.color);
             }
         });
@@ -383,6 +392,186 @@ async function loadPoints() {
     }
 }
 loadPoints();
+
+/**
+ * ==========================================
+ * 5c. SEARCH (points)
+ * ==========================================
+ * Searches the name and category of every point. Only points whose
+ * layer is currently switched on are suggested.
+ */
+const searchIndex = []; // filled in loadPoints()
+
+const searchEl = document.getElementById('search');
+const searchInput = document.getElementById('search-input');
+const searchClear = document.getElementById('search-clear');
+const searchResults = document.getElementById('search-results');
+const MAX_RESULTS = 8;
+
+let searchMatches = [];
+let activeResult = -1;
+
+// Lower-case and strip accents so "regulation" finds "régulation"
+function normalize(text) {
+    return String(text).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+
+function escapeHtml(text) {
+    return String(text).replace(/[&<>"']/g, (c) => (
+        { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+}
+
+// Highlight the first match of the query in the name (accent-insensitive)
+function highlight(name, query) {
+    const at = normalize(name).indexOf(query);
+    if (at === -1 || normalize(name).length !== name.length) return escapeHtml(name);
+    return escapeHtml(name.slice(0, at))
+        + '<mark>' + escapeHtml(name.slice(at, at + query.length)) + '</mark>'
+        + escapeHtml(name.slice(at + query.length));
+}
+
+function setResultsOpen(open) {
+    searchResults.hidden = !open;
+    searchInput.setAttribute('aria-expanded', String(open));
+    if (!open) {
+        activeResult = -1;
+        searchInput.removeAttribute('aria-activedescendant');
+    }
+}
+
+function setActiveResult(index) {
+    const options = searchResults.querySelectorAll('.search__option');
+    if (!options.length) return;
+    activeResult = (index + options.length) % options.length;
+    options.forEach((el, i) => el.setAttribute('aria-selected', String(i === activeResult)));
+    const current = options[activeResult];
+    searchInput.setAttribute('aria-activedescendant', current.id);
+    current.scrollIntoView({ block: 'nearest' });
+}
+
+function renderResults() {
+    const query = normalize(searchInput.value.trim());
+    searchClear.hidden = !searchInput.value;
+
+    if (!query) {
+        searchMatches = [];
+        setResultsOpen(false);
+        return;
+    }
+
+    searchMatches = searchIndex
+        .filter((item) => map.hasLayer(item.group) && item.key.includes(query))
+        .sort((a, b) => {
+            // Names that start with the query first, then alphabetical
+            const sa = normalize(a.name).startsWith(query) ? 0 : 1;
+            const sb = normalize(b.name).startsWith(query) ? 0 : 1;
+            return sa - sb || a.name.localeCompare(b.name, 'fr', { numeric: true });
+        })
+        .slice(0, MAX_RESULTS);
+
+    if (!searchMatches.length) {
+        searchResults.innerHTML = '<li class="search__empty" role="presentation">Aucun ouvrage trouvé.</li>';
+    } else {
+        searchResults.innerHTML = searchMatches.map((item, i) => `
+            <li id="search-option-${i}" class="search__option" role="option" aria-selected="false" data-index="${i}">
+                <span class="search__dot" style="--dot:${escapeHtml(item.color)}"></span>
+                <span class="search__text">
+                    <span class="search__name">${highlight(item.name, query)}</span>
+                    <span class="search__cat">${escapeHtml(item.category)}</span>
+                </span>
+            </li>`).join('');
+    }
+    activeResult = -1;
+    setResultsOpen(true);
+}
+
+function goToResult(item) {
+    setResultsOpen(false);
+    searchInput.value = item.name;
+    searchClear.hidden = false;
+    searchInput.blur();
+    setPanelOpen(false);
+
+    const target = item.layer.getLatLng();
+    const zoom = Math.max(map.getZoom(), 16);
+    map.once('moveend', () => item.layer.openPopup());
+    map.flyTo(target, zoom, { duration: 0.8 });
+}
+
+searchInput.addEventListener('input', renderResults);
+searchInput.addEventListener('focus', () => {
+    setPanelOpen(false);
+    if (searchInput.value.trim()) renderResults();
+});
+
+searchInput.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case 'ArrowDown':
+            e.preventDefault();
+            if (searchResults.hidden) renderResults();
+            setActiveResult(activeResult + 1);
+            break;
+        case 'ArrowUp':
+            e.preventDefault();
+            setActiveResult(activeResult - 1);
+            break;
+        case 'Enter':
+            if (searchMatches.length) {
+                e.preventDefault();
+                goToResult(searchMatches[activeResult >= 0 ? activeResult : 0]);
+            }
+            break;
+        case 'Escape':
+            if (!searchResults.hidden) {
+                setResultsOpen(false);
+            } else {
+                searchInput.value = '';
+                searchClear.hidden = true;
+            }
+            break;
+    }
+});
+
+searchResults.addEventListener('click', (e) => {
+    const option = e.target.closest('.search__option');
+    if (option) goToResult(searchMatches[Number(option.dataset.index)]);
+});
+
+searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.hidden = true;
+    setResultsOpen(false);
+    searchInput.focus();
+});
+
+map.on('click', () => setResultsOpen(false));
+layersToggle.addEventListener('click', () => setResultsOpen(false));
+
+// Keep taps inside the search box from reaching the map
+L.DomEvent.disableClickPropagation(searchEl);
+L.DomEvent.disableScrollPropagation(searchEl);
+
+/**
+ * ==========================================
+ * 5d. ABOUT DIALOG
+ * ==========================================
+ */
+const aboutButton = document.getElementById('about-button');
+const aboutDialog = document.getElementById('about-dialog');
+
+aboutButton.addEventListener('click', () => {
+    setPanelOpen(false);
+    setResultsOpen(false);
+    aboutDialog.showModal();
+});
+
+// Tap on the dimmed backdrop closes the dialog
+aboutDialog.addEventListener('click', (e) => {
+    if (e.target === aboutDialog) aboutDialog.close();
+});
+
+L.DomEvent.disableClickPropagation(aboutButton);
 
 /**
  * ==========================================
