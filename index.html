@@ -20,55 +20,56 @@
 <body>
     <div id="map" role="application" aria-label="Carte du réseau gravitaire"></div>
 
-    <!-- Title chip -->
-    <header class="title-chip">
-        <span class="title-chip__mark" aria-hidden="true"></span>
-        <div>
-            <h1>DGRID Hydraulic infrastructure</h1>
-            <p>ORMVA du Tadla</p>
-        </div>
-    </header>
+    <div class="topbar">
+        <!-- Title chip -->
+        <header class="title-chip">
+            <span class="title-chip__mark" aria-hidden="true"></span>
+            <div>
+                <h1>ORMVAT Hydro-infrastructure</h1>
+                <p>ORMVA du Tadla / DGRID</p>
+            </div>
+        </header>
 
-    <!-- Search -->
-    <div id="search" class="search" role="search">
-        <div class="search__field">
-            <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="11" cy="11" r="6.5" />
-                <path d="m20 20-4.2-4.2" />
-            </svg>
-            <input id="search-input" class="search__input" type="search" inputmode="search"
-                placeholder="Rechercher un ouvrage…" autocomplete="off" autocapitalize="off" spellcheck="false"
-                role="combobox" aria-label="Rechercher un ouvrage" aria-expanded="false" aria-controls="search-results"
-                aria-autocomplete="list" enterkeyhint="search" />
-            <button id="search-clear" class="search__clear" type="button" aria-label="Effacer la recherche" hidden>
+        <!-- Search -->
+        <div id="search" class="search" role="search">
+            <div class="search__field">
+                <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="m20 20-4.2-4.2" />
+                </svg>
+                <input id="search-input" class="search__input" type="search" inputmode="search"
+                    placeholder="Rechercher un ouvrage…" autocomplete="off" autocapitalize="off" spellcheck="false"
+                    role="combobox" aria-label="Rechercher un ouvrage" aria-expanded="false"
+                    aria-controls="search-results" aria-autocomplete="list" enterkeyhint="search" />
+                <button id="search-clear" class="search__clear" type="button" aria-label="Effacer la recherche" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m6 6 12 12M18 6 6 18" />
+                    </svg>
+                </button>
+            </div>
+            <ul id="search-results" class="search__results" role="listbox" aria-label="Résultats" hidden></ul>
+        </div>
+
+        <!-- Layers -->
+        <div class="layers">
+            <button id="layers-toggle" class="fab fab--light" type="button" aria-expanded="false"
+                aria-controls="layers-panel" aria-label="Couches et fond de carte">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="m6 6 12 12M18 6 6 18" />
+                    <path d="M12 3 2.5 8.2 12 13.4l9.5-5.2L12 3Z" />
+                    <path d="m2.5 12.1 9.5 5.2 9.5-5.2" />
+                    <path d="m2.5 15.9 9.5 5.1 9.5-5.1" />
                 </svg>
             </button>
+
+            <section id="layers-panel" class="panel" hidden>
+                <h2>Fond de carte</h2>
+                <div id="basemap-list" class="segmented" role="radiogroup" aria-label="Fond de carte"></div>
+
+                <h2>Couches</h2>
+                <ul id="layer-list" class="layer-list"></ul>
+            </section>
         </div>
-        <ul id="search-results" class="search__results" role="listbox" aria-label="Résultats" hidden></ul>
     </div>
-
-    <!-- Layers -->
-    <div class="layers">
-        <button id="layers-toggle" class="fab fab--light" type="button" aria-expanded="false"
-            aria-controls="layers-panel" aria-label="Couches et fond de carte">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 3 2.5 8.2 12 13.4l9.5-5.2L12 3Z" />
-                <path d="m2.5 12.1 9.5 5.2 9.5-5.2" />
-                <path d="m2.5 15.9 9.5 5.1 9.5-5.1" />
-            </svg>
-        </button>
-
-        <section id="layers-panel" class="panel" hidden>
-            <h2>Fond de carte</h2>
-            <div id="basemap-list" class="segmented" role="radiogroup" aria-label="Fond de carte"></div>
-
-            <h2>Couches</h2>
-            <ul id="layer-list" class="layer-list"></ul>
-        </section>
-    </div>
-
     <!-- About -->
     <button id="about-button" class="fab fab--light fab--about" type="button" aria-haspopup="dialog"
         aria-label="À propos">
@@ -101,15 +102,15 @@
         <div class="about__head">
             <span class="title-chip__mark" aria-hidden="true"></span>
             <div>
-                <h2 id="about-title">DGRID Hydraulic infrastructure</h2>
-                <p>ORMVA du Tadla</p>
+                <h2 id="about-title">ORMVAT Hydro infrastructure</h2>
+                <p>ORMVA du Tadla / DGRID</p>
             </div>
         </div>
 
         <p>
-            Cette carte présente les ouvrages et canaux du réseau gravitaire de l'ORMVAT :
+            Cette carte présente les ouvrages et canaux du réseau gravitaire et sous pression de l'ORMVAT :
             canaux primaires et secondaires, stations de filtration, prises, vannes,
-            départs et décharges, ainsi que le plan de M8/M9.
+            départs et décharges, ainsi que les réseaux d’irrigation sous pression.
         </p>
 
         <h3>Utilisation</h3>
