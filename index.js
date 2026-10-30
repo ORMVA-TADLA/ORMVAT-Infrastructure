@@ -42,14 +42,36 @@ activeBasemap.layer.addTo(map);
  * 2. OVERLAY LAYERS (single source of truth)
  * ==========================================
  */
-const imageOverlayGroup = L.layerGroup().addTo(map);
 const pDataGroup = L.layerGroup().addTo(map);
 const sDataGroup = L.layerGroup().addTo(map);
 
-let referenceImage = null; // set in addImageOverlay()
+/**
+ * One entry per image. Each gets its own toggle in the layers panel.
+ * Give the position in ONE of two ways:
+ *   - bounds:   [[south, west], [north, east]] in lat/lng (what dxf2png.py writes to *_bounds.json)
+ *   - mercator: { xMin, yMin, xMax, yMax } in Web Mercator (EPSG:3857) metres
+ * Optional: opacity (default 1), visible (default true).
+ * Images later in the list are drawn on top of earlier ones.
+ */
+const IMAGE_OVERLAYS = [
+    {
+        id: 'M8M9',
+        label: 'Plan de M8/M9',
+        url: './Reference-map-M8M9.png',
+        mercator: { xMin: -766932.573, yMin: 3796308.928, xMax: -756549.053, yMax: 3805209.088 }
+    },
+    {
+        id: 'M10M14',
+        label: 'Plan de M10/M14',
+        url: "Reseau d'irrigation M10M14.png",
+        mercator: {
+            xMin: -777680.9256618655, yMin: 3794148.0903488477, xMax: -763000.9335410759, yMax: 3802467.6990362583
+        }
+    },
+].map((img) => ({ ...img, group: L.layerGroup(), image: true }));
 
 const OVERLAYS = [
-    { id: 'image', label: 'Plan de M8/M9', group: imageOverlayGroup, image: true },
+    ...IMAGE_OVERLAYS,
     { id: 'primaires', label: 'Canaux Primaires', group: pDataGroup, color: 'blue', file: 'primaires.geojson' },
     { id: 'secondaires', label: 'Canaux Secondaires', group: sDataGroup, color: 'purple', file: 'secondaires.geojson' },
 ];
@@ -59,25 +81,31 @@ const OVERLAYS = [
  * 3. IMAGE OVERLAY (WEB MERCATOR)
  * ==========================================
  */
-function addImageOverlay() {
-    const imageUrl = './Reference-map-M8M9.png';
-
-    // Web Mercator bounding box
-    const xMin = -766932.573;
-    const yMin = 3796308.928;
-    const xMax = -756549.053;
-    const yMax = 3805209.088;
-
-    const topLeft = L.CRS.EPSG3857.unproject(L.point(xMin, yMax));
-    const bottomRight = L.CRS.EPSG3857.unproject(L.point(xMax, yMin));
-
-    referenceImage = L.imageOverlay(
-        imageUrl,
-        [[topLeft.lat, topLeft.lng], [bottomRight.lat, bottomRight.lng]],
-        { opacity: 1 }
-    ).addTo(imageOverlayGroup);
+function getImageBounds({ bounds, mercator }) {
+    if (bounds) return bounds;
+    if (mercator) {
+        const topLeft = L.CRS.EPSG3857.unproject(L.point(mercator.xMin, mercator.yMax));
+        const bottomRight = L.CRS.EPSG3857.unproject(L.point(mercator.xMax, mercator.yMin));
+        return [[topLeft.lat, topLeft.lng], [bottomRight.lat, bottomRight.lng]];
+    }
+    throw new Error('Image needs "bounds" or "mercator"');
 }
-addImageOverlay();
+
+function addImageOverlay(img) {
+    try {
+        L.imageOverlay(img.url, getImageBounds(img), {
+            opacity: img.opacity ?? 1,
+            interactive: false
+        }).addTo(img.group);
+
+        if (img.visible !== false) img.group.addTo(map);
+    } catch (error) {
+        console.error(`Error adding image ${img.id}:`, error);
+        setTimeout(() => showToast(`Impossible de charger ${img.label}.`)); // toast is defined further down
+    }
+}
+
+IMAGE_OVERLAYS.forEach(addImageOverlay);
 
 /**
  * ==========================================
@@ -156,7 +184,7 @@ function addOverlayRow(overlay) {
             <span class="${swatchClass}" ${swatchStyle}>${overlay.iconHtml || ''}</span>
             <span class="layer-row__label">${overlay.label}</span>
             <span class="switch">
-                <input type="checkbox" checked>
+                <input type="checkbox" ${overlay.visible === false ? '' : 'checked'}>
                 <span class="switch__track"></span>
             </span>
         </label>`;
@@ -196,11 +224,11 @@ const POINT_DEFAULT = {
 // One entry per category. Anything omitted falls back to POINT_DEFAULT.
 // Example: 'Station de filtration': { icon: ICONS.station, size: 30, color: '#4285F4' }
 const POINT_STYLES = {
-    'Station de filtration': { icon: './icons/house-fill.svg',color: '#4285F4' },
-    'Prises de préfiltration': {icon: './icons/jail-prison.svg',color: '#4285F4' },
-    'Vannes de régulation et de sectionnement': {color: '#F4B400'},
-    'Départs & Décharges': { color: '#795548'},
-    'Prises Secondaires': { color: '#673AB7'},
+    'Station de filtration': { icon: './icons/house-fill.svg', color: '#4285F4' },
+    'Prises de préfiltration': { icon: './icons/jail-prison.svg', color: '#4285F4' },
+    'Vannes de régulation et de sectionnement': { color: '#F4B400' },
+    'Départs & Décharges': { color: '#795548' },
+    'Prises Secondaires': { color: '#673AB7' },
 };
 
 // Order of the toggles in the panel (categories not listed go last).
