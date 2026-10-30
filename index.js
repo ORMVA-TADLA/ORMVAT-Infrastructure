@@ -212,7 +212,7 @@ const POINT_STYLES = {
     'Station de filtration': { icon: './icons/house-fill.svg',color: '#4285F4' },
     'Prises de préfiltration': {icon: './icons/jail-prison.svg',color: '#4285F4' },
     'Vannes de régulation et de sectionnement': {color: '#F4B400'},
-    'Départs et points de décharge': {},
+    'Départs & Décharges': {},
     'Prises Secondaires': { color: 'purple'},
 };
 

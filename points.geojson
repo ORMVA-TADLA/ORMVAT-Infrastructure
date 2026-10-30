@@ -1280,7 +1280,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Décharge canal D",
-                "category": "Départs et points de décharge",
+                "category": "Départs & Décharges",
                 "color": "#673AB7"
             },
             "geometry": {
@@ -1295,7 +1295,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Départ coursier",
-                "category": "Départs et points de décharge",
+                "category": "Départs & Décharges",
                 "color": "#673AB7"
             },
             "geometry": {
@@ -1310,7 +1310,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Départ médian EST E1—> E5",
-                "category": "Départs et points de décharge",
+                "category": "Départs & Décharges",
                 "color": "#673AB7"
             },
             "geometry": {
@@ -1325,7 +1325,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Départ T2",
-                "category": "Départs et points de décharge",
+                "category": "Départs & Décharges",
                 "color": "#673AB7"
             },
             "geometry": {
@@ -1340,7 +1340,7 @@
             "type": "Feature",
             "properties": {
                 "name": "Décharge canal G",
-                "category": "Départs et points de décharge",
+                "category": "Départs & Décharges",
                 "color": "#673AB7"
             },
             "geometry": {
