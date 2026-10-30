@@ -159,27 +159,14 @@ function addOverlayRow(overlay) {
                 <input type="checkbox" checked>
                 <span class="switch__track"></span>
             </span>
-        </label>
-        ${overlay.image ? `
-        <div class="opacity" data-disabled="false">
-            <span>Opacité</span>
-            <input type="range" min="0" max="1" step="0.05" value="1" aria-label="Opacité du plan de référence">
-        </div>` : ''}`;
+        </label>`;
 
     const checkbox = li.querySelector('input[type="checkbox"]');
-    const opacityBox = li.querySelector('.opacity');
 
     checkbox.addEventListener('change', () => {
         if (checkbox.checked) map.addLayer(overlay.group);
         else map.removeLayer(overlay.group);
-        if (opacityBox) opacityBox.dataset.disabled = String(!checkbox.checked);
     });
-
-    if (opacityBox) {
-        opacityBox.querySelector('input').addEventListener('input', (e) => {
-            referenceImage?.setOpacity(Number(e.target.value));
-        });
-    }
 
     layerList.appendChild(li);
 }
@@ -212,8 +199,8 @@ const POINT_STYLES = {
     'Station de filtration': { icon: './icons/house-fill.svg',color: '#4285F4' },
     'Prises de préfiltration': {icon: './icons/jail-prison.svg',color: '#4285F4' },
     'Vannes de régulation et de sectionnement': {color: '#F4B400'},
-    'Départs & Décharges': {},
-    'Prises Secondaires': { color: 'purple'},
+    'Départs & Décharges': { color: '#795548'},
+    'Prises Secondaires': { color: '#673AB7'},
 };
 
 // Order of the toggles in the panel (categories not listed go last).
