@@ -1,0 +1,1355 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R6: Vanne D14",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4242845,
+                    32.4023746
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R4: Vanne Amil D12",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.3992369,
+                    32.3568738
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R3: Vanne Amil D8",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.435694,
+                    32.319722
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R2: Vanne Amil D4",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4678781,
+                    32.2700774
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R1: Vanne mixte Timoulit",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#FBC02D"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4965085,
+                    32.2418667
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R0: Vanne mixte D0D1",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#FBC02D"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5075025,
+                    32.2160303
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne mixte départ D",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#FBC02D"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5284973,
+                    32.2086398
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne écluse départ GM",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5331764,
+                    32.2094743
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R’0: Vanne mixte GM",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#FBC02D"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5666618,
+                    32.2205182
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne entrée bassin 2",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#AFB42B"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5978167,
+                    32.2304864
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne sortie bassin 2",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#AFB42B"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5994291,
+                    32.2299962
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne entrée bassin 1",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#AFB42B"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6014868,
+                    32.2293553
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne sortie bassin 1",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#AFB42B"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.603194,
+                    32.228833
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "R’1: Vanne mixte (Départ G)",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#FBC02D"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6049271,
+                    32.2284016
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne murale coursier",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#E65100"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.62325,
+                    32.245972
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G3",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6449408,
+                    32.2227545
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G7",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6996716,
+                    32.215964
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G8",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7226222,
+                    32.2079899
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G9",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7404172,
+                    32.2100302
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne murale G10",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#E65100"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7650468,
+                    32.2046827
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G10",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7651844,
+                    32.2047067
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G11",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8095764,
+                    32.1951562
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G12",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8290817,
+                    32.1951349
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G13/G14",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8472755,
+                    32.1900452
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G15",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8759185,
+                    32.1885028
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vanne Amil G17",
+                "category": "Vannes de régulation et de sectionnement",
+                "color": "#0F9D58"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.928616,
+                    32.1821145
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D0",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.516324,
+                    32.2125686
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D1",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5069718,
+                    32.2241273
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D10",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.415402,
+                    32.3396742
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D11",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4083249,
+                    32.3460012
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D11BIS",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4031336,
+                    32.3522447
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D12",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.3993473,
+                    32.3568446
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D13",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4031016,
+                    32.3762544
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D14",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4209991,
+                    32.3978516
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D15",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4298298,
+                    32.4098507
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D16",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4281949,
+                    32.4165181
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D2",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4992552,
+                    32.2381538
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D3",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4967327,
+                    32.241688
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D3BIS",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4827887,
+                    32.25566
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D4",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4688855,
+                    32.2694576
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D5",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.46257129,
+                    32.28538109
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D6",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4538834,
+                    32.3029533
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D7",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4470181,
+                    32.3108209
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D8",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4361275,
+                    32.3194702
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire D9",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.4241825,
+                    32.3318206
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM0",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5458308,
+                    32.2115185
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM1",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5531514,
+                    32.2101956
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM2",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5662332,
+                    32.2202015
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM3",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5746096,
+                    32.2289755
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM4",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5831768,
+                    32.232059
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire GM5",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.5944812,
+                    32.2316785
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G0",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6057669,
+                    32.2281587
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G1",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6120008,
+                    32.2245544
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G2",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.630847,
+                    32.2225867
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G3",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6448,
+                    32.222812
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G4",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6505073,
+                    32.2237334
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G5",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6683246,
+                    32.2192703
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G6",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6920084,
+                    32.2177636
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G7",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6995768,
+                    32.2160594
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G8",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7224136,
+                    32.2079971
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G9",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7402788,
+                    32.2101342
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G10",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7648204,
+                    32.2046938
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G11/G11Bis",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8094629,
+                    32.1951632
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G12/G12Bis",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8289637,
+                    32.195235
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G13/G14",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.847191,
+                    32.1901169
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G15/G15Bis/G0",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.8757813,
+                    32.1885649
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G16",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.9075274,
+                    32.1856999
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G17/G17Bis",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.9286285,
+                    32.1823046
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Secondaire G18",
+                "category": "Prises Secondaires",
+                "color": "#795548"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.9617579,
+                    32.1760661
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A1",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6646153,
+                    32.2854796
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A2",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7455884,
+                    32.2708247
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A3",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.766829,
+                    32.2672629
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A4",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.786472,
+                    32.261472
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A5",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.856607,
+                    32.2536577
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A6",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7852636,
+                    32.2054478
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A7",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7595402,
+                    32.2213007
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Station de filtration A8",
+                "category": "Station de filtration",
+                "color": "#4285F4"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.654889,
+                    32.240972
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A1",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6041497,
+                    32.2287311
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A2",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.722333,
+                    32.207972
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A3",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7401538,
+                    32.2101515
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A4",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7647527,
+                    32.2046838
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A5",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7648731,
+                    32.2047072
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A6",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.764944,
+                    32.204722
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A8 (Départ G9)",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.7596844,
+                    32.2015758
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Prise de préfiltration A8 (Départ G5)",
+                "category": "Prises de préfiltration",
+                "color": "#0288D1"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6501833,
+                    32.2238587
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Décharge canal D",
+                "category": "Départs et points de décharge",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.423174,
+                    32.4525718
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Départ coursier",
+                "category": "Départs et points de décharge",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.604944,
+                    32.228444
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Départ médian EST E1—> E5",
+                "category": "Départs et points de décharge",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.623083,
+                    32.245944
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Départ T2",
+                "category": "Départs et points de décharge",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.6045162,
+                    32.2284383
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Décharge canal G",
+                "category": "Départs et points de décharge",
+                "color": "#673AB7"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -6.9618846,
+                    32.175984
+                ]
+            }
+        }
+    ]
+}

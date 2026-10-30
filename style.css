@@ -275,6 +275,29 @@ button {
 	font-size: 15px;
 }
 
+.layer-row__swatch--dot {
+	width: 14px;
+	height: 14px;
+	margin: 0 4px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	box-shadow: 0 0 0 1px rgba(18, 48, 46, 0.35);
+}
+
+.layer-row__swatch--icon {
+	width: 22px;
+	height: 22px;
+	background: none;
+	color: var(--swatch);
+}
+
+.layer-row__swatch--icon svg,
+.layer-row__swatch--icon img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
 /* Switch */
 .switch {
 	position: relative;
@@ -382,6 +405,70 @@ button {
 
 .leaflet-bottom.leaflet-right {
 	margin-bottom: var(--inset-bottom);
+}
+
+/* ---------- Point icons ---------- */
+.point-icon {
+	background: none;
+	border: 0;
+}
+
+.point-icon span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	filter: drop-shadow(0 0 1.5px #fff) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
+}
+
+.point-icon svg,
+.point-icon img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* ---------- Point labels & popups ---------- */
+.leaflet-tooltip.point-label {
+	padding: 3px 8px;
+	background: rgba(255, 255, 255, 0.94);
+	border: 0;
+	border-radius: 8px;
+	box-shadow: 0 1px 4px rgba(18, 48, 46, 0.3);
+	font-family: var(--font);
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--ink);
+	pointer-events: none;
+}
+
+.leaflet-tooltip.point-label::before {
+	display: none;
+}
+
+.leaflet-popup-content-wrapper {
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow);
+	font-family: var(--font);
+}
+
+.leaflet-popup-content {
+	margin: 12px 16px;
+}
+
+.point-popup {
+	display: grid;
+	gap: 2px;
+}
+
+.point-popup strong {
+	font-size: 15px;
+	font-weight: 650;
+	color: var(--ink);
+}
+
+.point-popup span {
+	font-size: 12px;
+	color: var(--ink-soft);
 }
 
 /* ---------- User location ---------- */
