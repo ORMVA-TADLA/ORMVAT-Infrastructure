@@ -203,7 +203,8 @@ button {
 .layers {
 	position: relative;
 	flex: none;
-	z-index: 2; /* panel stays above the search results */
+	z-index: 2;
+	margin-left: auto;
 }
 
 .panel {
