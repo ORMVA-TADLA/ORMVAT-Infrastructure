@@ -57,15 +57,23 @@ const IMAGE_OVERLAYS = [
     {
         id: 'M8M9',
         label: 'Plan de M8/M9',
-        url: './Reference-map-M8M9.png',
+        url: "M8M9.png",
         mercator: { xMin: -766932.573, yMin: 3796308.928, xMax: -756549.053, yMax: 3805209.088 }
     },
     {
         id: 'M10M14',
         label: 'Plan de M10/M14',
-        url: "Reseau d'irrigation M10M14.png",
+        url: "M10M14.png",
         mercator: {
             xMin: -777680.9256618655, yMin: 3794148.0903488477, xMax: -763000.9335410759, yMax: 3802467.6990362583
+        }
+    },
+    {
+        id: 'M15M18',
+        label: 'Plan de M15/M18',
+        url: "M15M18.png",
+        mercator: {
+            xMin: -782500.8423901462, yMin: 3790559.670166541, xMax: -773497.8698172284, yMax: 3799991.4685383267
         }
     },
 ].map((img) => ({ ...img, group: L.layerGroup(), image: true }));
