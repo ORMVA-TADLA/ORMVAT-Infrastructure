@@ -57,13 +57,16 @@ const IMAGE_OVERLAYS = [
     {
         id: 'M8M9',
         label: 'Plan de M8/M9',
-        url: "M8M9.png",
-        mercator: { xMin: -766932.573, yMin: 3796308.928, xMax: -756549.053, yMax: 3805209.088 }
+        url: "M8M9.webp",
+        mercator: {
+            xMin: -766576.6145326667, yMin: 3796545.837640416, xMax: -757934.0459939602, yMax: 3805278.4823185825
+        }
     },
     {
         id: 'M10M14',
         label: 'Plan de M10/M14',
         url: "M10M14.png",
+        visible: false,
         mercator: {
             xMin: -776228.1603927247, yMin: 3794170.638424293, xMax: -763000.2075540195, yMax: 3802467.6990362583
         }
@@ -72,8 +75,17 @@ const IMAGE_OVERLAYS = [
         id: 'M15M18',
         label: 'Plan de M15/M18',
         url: "M15M18.png",
+        visible: false,
         mercator: {
             xMin: -782500.8423901462, yMin: 3790559.670166541, xMax: -773497.8698172284, yMax: 3799991.4685383267
+        }
+    }, {
+        id: 'G5',
+        label: 'Plan de G5',
+        url: "G5.webp",
+        visible: false,
+        mercator: {
+            xMin: -750922.1653193252, yMin: 3796164.7440171344, xMax: -740521.3001422376, yMax: 3800838.864915457
         }
     },
 ].map((img) => ({ ...img, group: L.layerGroup(), image: true }));
